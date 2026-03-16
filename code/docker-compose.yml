@@ -1,0 +1,41 @@
+version: '3.7'
+services:
+ diat-dev-db:
+  image: mysql:5.7
+  environment:
+   MYSQL_ROOT_PASSWORD: Igss.2022
+   MYSQL_DATABASE: diat_dev
+   MYSQL_USER: usr_laravel
+   MYSQL_PASSWORD: Usr.igss.2022
+  ports:
+   - 33076:3306
+  volumes:
+   - ./database/schemas/:/var/lib/mysql
+  networks:
+   diat_dev_net:
+    ipv4_address: 173.25.100.19
+ diat-dev-1:
+  build:
+   context: ./
+   dockerfile: Dockerfile
+  ports:
+   - 8600:80
+  volumes:
+   - ./code-dev:/var/www
+   - ./code-dev/public:/var/www/html
+  networks:
+   diat_dev_net:
+    ipv4_address: 173.25.100.20
+  depends_on:
+   - diat-dev-db
+volumes:
+ code-dev:
+ database:
+networks:
+ diat_dev_net:
+  driver: bridge
+  ipam:
+   driver: default
+   config:
+    -
+     subnet: 173.25.100.0/24
