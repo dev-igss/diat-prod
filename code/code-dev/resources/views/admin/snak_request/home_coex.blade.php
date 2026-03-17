@@ -6,7 +6,7 @@ ini_set('max_execution_time', 0); ?>
 
 @section('breadcrumb')
     <li class="breadcrumb-item">
-        <a href="{{ url('/admin/diet_requests') }}" class="nav-link"><i class="fas fa-file-alt"></i> Solicitudes de Refacciones de Banco de Sangre</a>
+        <a href="{{ url('/admin/diet_requests') }}" class="nav-link"><i class="fas fa-file-alt"></i> Solicitudes de Refacciones Consulta Externa</a>
     </li>
 @endsection
 
