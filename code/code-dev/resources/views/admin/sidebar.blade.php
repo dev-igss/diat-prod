@@ -51,7 +51,13 @@
 
             @if(kvfj(Auth::user()->permissions, 'snak_requests'))
                 <li>
-                    <a href="{{ url('/admin/solicitud_refacciones') }}" class="lk-snak_requests lk-snak_request_add"><i class="fas fa-receipt"></i> Solicitud de Refacciones</a>
+                    <a href="{{ url('/admin/solicitud_refacciones') }}" class="lk-snak_requests lk-snak_request_add"><i class="fas fa-receipt"></i> Solicitudes de Banco de Sangre</a>
+                </li>
+            @endif
+
+            @if(kvfj(Auth::user()->permissions, 'snak_requests'))
+                <li>
+                    <a href="{{ url('/admin/solicitud_refacciones') }}" class="lk-snak_requests lk-snak_request_add"><i class="fas fa-receipt"></i> Solicitudes de Coex</a>
                 </li>
             @endif
 
