@@ -25,7 +25,7 @@
 
     @foreach($diet_request as $dr)
         <body style="font-size: 14px; font-family: 'Roboto Slab', serif;">
-            <div style="float: left; margin-top: -25px;"" >
+            <div style="float: left; margin-top: -25px;" >
                 <img src="{{ url('img/Isotipo.png') }}" alt="" width="40px" height="40px">
             </div>
 

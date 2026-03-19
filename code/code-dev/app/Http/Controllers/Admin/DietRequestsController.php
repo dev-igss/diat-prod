@@ -766,7 +766,32 @@ class DietRequestsController extends Controller
         endif;
     }
 
-    public function getDietRequestPdf($id){
+    public function getDietRequestPdf($id) {
+    // Usamos with() para cargar relaciones si las tienes (ej: service, user, journey)
+    $diet_request = DietRequest::with(['service', 'user', 'journey'])->findOrFail($id);
+    
+    // Obtenemos los detalles y los agrupamos por ID de dieta inmediatamente
+    $details = DietRequestDetail::where('iddiet_request', $id)->get()->groupBy('iddiet');
+
+    // Optimizamos subtotales: convertimos a un Key-Value pair para acceso rápido
+    $subtotales = DB::table('diet_request_details')
+                 ->select('iddiet', DB::raw('count(iddiet) as subtotal'))
+                 ->where('iddiet_request', $id)
+                 ->groupBy('iddiet')
+                 ->get()
+                 ->pluck('subtotal', 'iddiet'); // Resultado: [1 => 5, 2 => 3...]
+
+    $data = [
+        'dr' => $diet_request, // Lo llamo $dr para simplificar en la vista
+        'details' => $details,
+        'subtotales' => $subtotales
+    ];
+
+    $pdf = PDF::loadView('admin.diet_request.print', $data)->setPaper('a4', 'portrait');
+    return $pdf->stream('Solicitud_Dietas_'.$id.'.pdf');
+}
+
+    /*public function getDietRequestPdf($id){
         $diet_request = DietRequest::findOrFail($id);
         $iddiet_request = $diet_request->id;
         $details = DietRequestDetail::where('iddiet_request', $iddiet_request)->get();
@@ -797,7 +822,7 @@ class DietRequestsController extends Controller
 
         $pdf = PDF::loadView('admin.diet_request.print',$data)->setPaper('a4', 'portrait');
         return $pdf->stream('ING-7.pdf');
-    }
+    }*/
 
     public function getDietRequestPdfLote($jornada){
         $hoy = Carbon::now()->format('Y-m-d');

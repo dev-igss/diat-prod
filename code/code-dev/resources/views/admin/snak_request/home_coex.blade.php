@@ -26,7 +26,7 @@ ini_set('max_execution_time', 0); ?>
                                     <label for="name"> <strong><sup style="color: red;">(*)</sup> Servicio: </strong></label> 
                                     <div class="input-group">
                                         <span class="input-group-text" id="basic-addon1"><i class="fas fa-layer-group"></i></span>
-                                        <select name="idservice" id="idservice" style="width: 90%" >
+                                        <select name="idservice" id="idservice" style="width: 85%" >
                                             @foreach ($services as $s)
                                                 <option value=""></option>
                                                 <option value="{{$s->id}}">{{$s->name}}</option>
