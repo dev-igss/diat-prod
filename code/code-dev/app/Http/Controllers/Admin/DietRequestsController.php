@@ -1857,7 +1857,7 @@ class DietRequestsController extends Controller
                     'solicitud_fuera_tiempo' => $solicitud_fuera_tiempo
                 ];
 
-                return view('admin.snak_request.home', $data);
+                return view('admin.snak_request.home_coex', $data);
             
             endif;
         else:
@@ -1874,7 +1874,7 @@ class DietRequestsController extends Controller
                     'solicitud_fuera_tiempo' => $solicitud_fuera_tiempo
                 ];
 
-                return view('admin.snak_request.home', $data);
+                return view('admin.snak_request.home_coex', $data);
 
             
         endif;
