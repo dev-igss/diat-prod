@@ -4,18 +4,34 @@
     <meta charset="UTF-8">
     <title>Solicitud de Dietas - {{ $dr->id }}</title>
     <style>
-        body { font-size: 12px; font-family: 'Roboto Slab', serif; margin: 0; padding: 0; }
-        table { border-collapse: collapse; width: 100%; margin-top: 10px; }
-        table, th, td { border: 1px solid black; }
-        th, td { padding: 4px; text-align: center; }
-        .header-container { width: 100%; height: 50px; position: relative; }
-        .logo { position: absolute; left: 0; top: 0; }
-        .title { text-align: center; font-weight: bold; font-size: 14px; margin-top: 10px; }
-        .code { position: absolute; right: 0; top: 0; font-weight: bold; }
-        .input-box { border: 1px solid black; padding: 2px 10px; display: inline-block; min-width: 100px; }
-        .info-header { margin-top: 20px; width: 100%; }
-        .text-left { text-align: left; }
-    </style>
+    @page {
+        margin: 1.5cm 1cm; /* Margen superior e inferior para que no pegue al borde */
+    }
+    body { 
+        font-size: 11px; /* Bajamos un punto para asegurar que quepa todo */
+        font-family: 'Roboto Slab', serif; 
+        margin: 0; 
+        padding: 0;
+    }
+    table { 
+        border-collapse: collapse; 
+        width: 100%; 
+        table-layout: fixed; /* Mantiene las columnas alineadas */
+    }
+    th, td { 
+        border: 1px solid black; 
+        padding: 3px 5px; 
+        height: 25px; /* Altura mínima por celda */
+        word-wrap: break-word;
+    }
+    .header-table { border: none; margin-bottom: 10px; }
+    .header-table td { border: none; padding: 0; }
+    
+    /* Clase para forzar celdas más altas en secciones vacías */
+    .filler-cell {
+        height: 35px; 
+    }
+</style>
 </head>
 <body>
 
@@ -136,29 +152,33 @@
                 </tr>
             @endforeach
 
-            {{-- OTRAS (DINÁMICO) --}}
+            {{-- OTRAS (Especificar) --}}
             @php
                 $idsOtras = [19,20,21,22,23,24,25,26,27,28,29];
                 $detallesOtras = collect();
-                foreach($idsOtras as $id) { if($details->has($id)) $detallesOtras = $detallesOtras->concat($details->get($id)); }
+                foreach($idsOtras as $id) { 
+                    if($details->has($id)) $detallesOtras = $detallesOtras->concat($details->get($id)); 
+                }
                 
                 $listaOtras = $detallesOtras->map(fn($d) => $d->specify ? "$d->specify ($d->bed_number)" : $d->bed_number);
                 $chunksOtras = $listaOtras->chunk(4);
-                $filasOtras = max($chunksOtras->count(), 2);
+                
+                // Aumentamos el mínimo de 2 a 6 para que "estire" la tabla hacia el final de la hoja
+                $filasOtras = max($chunksOtras->count(), 6); 
                 $sumOtras = $subtotales_otras->first()->subtotal ?? 0;
             @endphp
             <tr>
                 <th colspan="2" rowspan="{{ $filasOtras }}">OTRAS (Especificar)</th>
-                <td colspan="2">{{ $chunksOtras->has(0) ? $chunksOtras[0]->implode(', ') : '' }}</td>
+                <td colspan="2" class="filler-cell">{{ $chunksOtras->has(0) ? $chunksOtras[0]->implode(', ') : '' }}</td>
                 <td colspan="2" rowspan="{{ $filasOtras }}">{{ $sumOtras > 0 ? $sumOtras : '' }}</td>
             </tr>
             @for ($i = 1; $i < $filasOtras; $i++)
-                <tr><td colspan="2">{{ $chunksOtras->has($i) ? $chunksOtras[$i]->implode(', ') : '' }}</td></tr>
+                <tr><td colspan="2" class="filler-cell">{{ $chunksOtras->has($i) ? $chunksOtras[$i]->implode(', ') : '' }}</td></tr>
             @endfor
 
-            {{-- NPO --}}
+            {{-- NPO (Fila final) --}}
             <tr>
-                <th colspan="2">NPO</th>
+                <th colspan="2" style="height: 40px;">NPO</th>
                 <td colspan="2">{{ ($details->get(18) ?? collect())->pluck('bed_number')->implode(', ') }}</td>
                 <td colspan="2">{{ $subtotales->get(18) ?? '' }}</td>
             </tr>
