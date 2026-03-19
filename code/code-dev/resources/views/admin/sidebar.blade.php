@@ -57,7 +57,7 @@
 
             @if(kvfj(Auth::user()->permissions, 'snak_requests'))
                 <li>
-                    <a href="{{ url('/admin/solicitud_refacciones') }}" class="lk-snak_requests lk-snak_request_add"><i class="fas fa-receipt"></i> Solicitudes de Coex</a>
+                    <a href="{{ url('/admin/solicitud_refacciones_coex') }}" class="lk-snak_requests lk-snak_request_add"><i class="fas fa-receipt"></i> Solicitudes de Coex</a>
                 </li>
             @endif
 

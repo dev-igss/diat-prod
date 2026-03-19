@@ -34,6 +34,9 @@
         Route::get('/solicitud_refacciones', 'Admin\DietRequestsController@getSnak')->name('snak_requests');
         Route::post('/solicitud_refaccion/solicitar', 'Admin\DietRequestsController@postDietRequestAdd')->name('snak_request_add');
 
+        Route::get('/solicitud_refacciones_coex', 'Admin\DietRequestsController@getSnakCoex')->name('snak_requests');
+        Route::post('/solicitud_refaccion_coex/solicitar', 'Admin\DietRequestsController@postDietRequestAdd')->name('snak_request_add');
+
         //Services
         Route::get('/servicios_general', 'Admin\ServicesController@getHome')->name('serviceg_list');
         Route::post('/servicios_general/agregar', 'Admin\ServicesController@postServicesGeneralAdd')->name('serviceg_add');

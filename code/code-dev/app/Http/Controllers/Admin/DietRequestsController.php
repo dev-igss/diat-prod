@@ -1803,6 +1803,85 @@ class DietRequestsController extends Controller
         
     }
 
+    public function getSnakCoex(){
+
+        /*$sumatoria = DB::table('diet_requests')
+                ->select(
+                        
+                        DB::raw("SUM(diet_requests.total_diets) as suma"))
+                ->where('diet_requests.idjourney', 4)
+                ->where('diet_requests.status',1)
+                ->get();
+        return $sumatoria;
+        $sumatoria = DietRequest::where('idjourney', 4)->where('status',1)->get();
+        return collect($sumatoria)->sum('total_diets');*/ 
+        $fecha = Carbon::now()->format('Y-m-d');
+
+        if(Auth::user()->role == 5):
+            $solicitud_fuera = DietRequestOut::whereDate('created_at',$fecha)->where('idapplicant', Auth::user()->id)->where('status',1)->first();
+
+            if($solicitud_fuera):
+
+                $solicitud_fuera_tiempo = 1;
+                $solicitud_fuera_id = $solicitud_fuera->id;
+                $cantidad_dietas = $solicitud_fuera->amount_diets;
+
+                $services = Service::where('type','1')
+                        ->where('parent_id', '=', '2')
+                        ->where('unit_id', '1')
+                        ->get();
+
+                $snak_requests = DietRequest::where('idjourney', '4')->where('idapplicant', Auth::user()->id)->orderBy('id', 'Asc')->get();
+
+                $data = [
+                    'services' => $services,
+                    'snak_requests' => $snak_requests,
+                    'cantidad_dietas' => $cantidad_dietas,
+                    'solicitud_fuera_tiempo' => $solicitud_fuera_tiempo,
+                    'solicitud_fuera_id' => $solicitud_fuera_id
+                ];
+
+                return view('admin.snak_request.home', $data);
+            else:
+
+                $services = Service::where('type','1')
+                        ->where('parent_id', '<>', '2')
+                        ->where('unit_id', '1')
+                        ->get();
+
+                $snak_requests = DietRequest::where('idjourney', '4')->where('idapplicant', Auth::user()->id)->orderBy('id', 'Asc')->get();
+                $solicitud_fuera_tiempo = 0;
+                $data = [
+                    'services' => $services,
+                    'snak_requests' => $snak_requests,
+                    'solicitud_fuera_tiempo' => $solicitud_fuera_tiempo
+                ];
+
+                return view('admin.snak_request.home', $data);
+            
+            endif;
+        else:
+                $services = Service::where('type','1')
+                        ->where('parent_id', '=', '2')
+                        ->where('unit_id', '1')
+                        ->get();
+
+                $snak_requests = DietRequest::where('idjourney', '4')->where('idapplicant', Auth::user()->id)->orderBy('id', 'Asc')->get();
+                $solicitud_fuera_tiempo = 0;
+                $data = [
+                    'services' => $services,
+                    'snak_requests' => $snak_requests,
+                    'solicitud_fuera_tiempo' => $solicitud_fuera_tiempo
+                ];
+
+                return view('admin.snak_request.home', $data);
+
+            
+        endif;
+
+        
+    }
+
     public function getReports(){
         
         
