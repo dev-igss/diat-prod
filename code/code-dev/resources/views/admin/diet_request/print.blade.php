@@ -21,7 +21,7 @@
     th, td { 
         border: 1px solid black; 
         padding: 3px 5px; 
-        height: 25px; /* Altura mínima por celda */
+        height: 19px; /* Altura mínima por celda */
         word-wrap: break-word;
     }
     .header-table { border: none; margin-bottom: 10px; }
@@ -31,6 +31,15 @@
     .filler-cell {
         height: 35px; 
     }
+
+        .header-container { width: 100%; height: 50px; position: relative; }
+        .logo { position: absolute; left: 0; top: 0; }
+        .title { text-align: center; font-weight: bold; font-size: 14px; margin-top: 10px; }
+        .code { position: absolute; right: 0; top: 0; font-weight: bold; }
+        .input-box { border: 1px solid black; padding: 2px 10px; display: inline-block; min-width: 100px; }
+        .info-header { margin-top: 20px; width: 100%; }
+        .text-left { text-align: left; }
+    </style>
 </style>
 </head>
 <body>
@@ -163,8 +172,8 @@
                 $listaOtras = $detallesOtras->map(fn($d) => $d->specify ? "$d->specify ($d->bed_number)" : $d->bed_number);
                 $chunksOtras = $listaOtras->chunk(4);
                 
-                // Aumentamos el mínimo de 2 a 6 para que "estire" la tabla hacia el final de la hoja
-                $filasOtras = max($chunksOtras->count(), 6); 
+                // Aumentamos el mínimo de 2 a 3 para que "estire" la tabla hacia el final de la hoja
+                $filasOtras = max($chunksOtras->count(), 3); 
                 $sumOtras = $subtotales_otras->first()->subtotal ?? 0;
             @endphp
             <tr>
