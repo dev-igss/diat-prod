@@ -51,6 +51,7 @@ ini_set('max_execution_time', 0); ?>
                     <thead>
                         <tr>
                             <td><strong> OPCIONES </strong></td>
+                            <td><strong> NO. </strong></td>
                             <td><strong> SOLICITADA </strong></td>
                             <td><strong> JORNADA </strong></td>
                             <td><strong> SERVICIO </strong></td>
@@ -80,6 +81,7 @@ ini_set('max_execution_time', 0); ?>
                                         @endif
                                     </div>
                                 </td>
+                                <td>{{ $dr->id }}</td>
                                 <td>{{ $dr->created_at->format('d-m-Y H:i') }}</td>
                                 <td>
                                     @if($dr->idjourney == 4)
