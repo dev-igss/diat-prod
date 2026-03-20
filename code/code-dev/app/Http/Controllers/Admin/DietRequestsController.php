@@ -834,7 +834,7 @@ class DietRequestsController extends Controller
         ];
 
         $pdf = PDF::loadView('admin.diet_request.print',$data)->setPaper('a4', 'portrait');
-        return $pdf->stream('ING-7.pdf');
+        return $pdf->stream('Solicitud de Dietas-'.$iddiet_request.'.pdf');
     }
 
     public function getDietRequestPdfLote($jornada){
@@ -881,7 +881,7 @@ class DietRequestsController extends Controller
        
 
         $pdf = PDF::loadView('admin.diet_request.print_lote',$data)->setPaper('a4', 'portrait');
-        return $pdf->stream('ING-7.pdf');
+        return $pdf->stream('Solicitud de Dietas Lote -'.$hoy.'.pdf');
     }
 
     public function getDietRequestPdfCocineta($jornada){
