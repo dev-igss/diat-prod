@@ -766,46 +766,45 @@ class DietRequestsController extends Controller
         endif;
     }
 
-    public function getDietRequestPdf($id)
-{
-    // 1. Cargamos la solicitud con sus relaciones para evitar queries extra en la vista
-    $diet_request = DietRequest::with(['service', 'user', 'journey'])->findOrFail($id);
-
-    // 2. Obtenemos todos los detalles y los agrupamos por iddiet
-    // Esto permite que en la vista hagamos $details->get(ID)
-    $details = DietRequestDetail::where('iddiet_request', $id)->get()->groupBy('iddiet');
-
-    // 3. Subtotales generales (Convertidos a un mapa de ID => Total)
-    $subtotales = DB::table('diet_request_details')
-        ->select('iddiet', DB::raw('count(iddiet) as subtotal'))
-        ->where('iddiet_request', $id)
-        ->groupBy('iddiet')
-        ->get()
-        ->pluck('subtotal', 'iddiet'); 
-
-    // 4. Subtotales específicos para la sección "OTRAS" (IDs 19 al 29)
-    $subtotales_otras = DB::table('diet_request_details')
-        ->select(DB::raw('count(iddiet) as subtotal'))
-        ->where('iddiet_request', $id)
-        ->whereIn('iddiet', ['19','20','21','22','23','24','25','26','27','28','29'])
-        ->get();
-
-    // 5. Consolidamos la data
-    $data = [
-        'dr' => $diet_request, // Usamos 'dr' para coincidir con la vista optimizada
-        'details' => $details,
-        'subtotales' => $subtotales,
-        'subtotales_otras' => $subtotales_otras
-    ];
-
-    // 6. Generación del PDF
-    $pdf = PDF::loadView('admin.diet_request.print', $data)
-              ->setPaper('a4', 'portrait');
-
-    return $pdf->stream('Solicitud_Dietas_SPS184.pdf');
-}
-
     /*public function getDietRequestPdf($id){
+        // 1. Cargamos la solicitud con sus relaciones para evitar queries extra en la vista
+        $diet_request = DietRequest::with(['service', 'user', 'journey'])->findOrFail($id);
+
+        // 2. Obtenemos todos los detalles y los agrupamos por iddiet
+        // Esto permite que en la vista hagamos $details->get(ID)
+        $details = DietRequestDetail::where('iddiet_request', $id)->get()->groupBy('iddiet');
+
+        // 3. Subtotales generales (Convertidos a un mapa de ID => Total)
+        $subtotales = DB::table('diet_request_details')
+            ->select('iddiet', DB::raw('count(iddiet) as subtotal'))
+            ->where('iddiet_request', $id)
+            ->groupBy('iddiet')
+            ->get()
+            ->pluck('subtotal', 'iddiet'); 
+
+        // 4. Subtotales específicos para la sección "OTRAS" (IDs 19 al 29)
+        $subtotales_otras = DB::table('diet_request_details')
+            ->select(DB::raw('count(iddiet) as subtotal'))
+            ->where('iddiet_request', $id)
+            ->whereIn('iddiet', ['19','20','21','22','23','24','25','26','27','28','29'])
+            ->get();
+
+        // 5. Consolidamos la data
+        $data = [
+            'dr' => $diet_request, // Usamos 'dr' para coincidir con la vista optimizada
+            'details' => $details,
+            'subtotales' => $subtotales,
+            'subtotales_otras' => $subtotales_otras
+        ];
+
+        // 6. Generación del PDF
+        $pdf = PDF::loadView('admin.diet_request.print', $data)
+                ->setPaper('a4', 'portrait');
+
+        return $pdf->stream('Solicitud de Dietas.pdf');
+    }*/
+
+    public function getDietRequestPdf($id){
         $diet_request = DietRequest::findOrFail($id);
         $iddiet_request = $diet_request->id;
         $details = DietRequestDetail::where('iddiet_request', $iddiet_request)->get();
@@ -836,7 +835,7 @@ class DietRequestsController extends Controller
 
         $pdf = PDF::loadView('admin.diet_request.print',$data)->setPaper('a4', 'portrait');
         return $pdf->stream('ING-7.pdf');
-    }*/
+    }
 
     public function getDietRequestPdfLote($jornada){
         $hoy = Carbon::now()->format('Y-m-d');
