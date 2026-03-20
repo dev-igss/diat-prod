@@ -74,7 +74,7 @@ ini_set('max_execution_time', 0); ?>
                                             <a href="#" data-action="servida" data-servicio="{{ $dr->service->name  }}" data-dietas="{{ $dr->total_diets }}" data-path="admin/solicitud_dieta" data-object="{{ $dr->id }}" class="btn-deleted" data-toogle="tooltrip" data-placement="top" title="Dietas Servidas" ><i class="fas fa-clipboard-check"></i></a>
                                         @endif
                                         @if(kvfj(Auth::user()->permissions, 'diet_request_change_diets_served') && $dr->status == '2')
-                                            <a href="#" data-action="cambio_dietas_servidas" data-path="admin/solicitud_dieta" data-dietas-served="{{ $dr->diets_served }}" data-object="{{ $dr->id }}" class="btn-deleted" data-toogle="tooltrip" data-placement="top" title="Cambiar Dietas Servidas" ><i class="fa-solid fa-file-pen"></i></a>
+                                            <a href="#" data-action="cambio_dietas_servidas" data-path="admin/solicitud_dieta" data-dietas-served="{{ $dr->diets_served }}" data-object="{{ $dr->id }}" class="btn-deleted" data-toogle="tooltrip" data-placement="top" title="Cambiar Dietas Servidas" ><i class="fas fa-file-pen"></i></a>
                                         @endif
                                         @if(kvfj(Auth::user()->permissions, 'diet_request_delete') && $dr->status != '2' && $dr->status != '3')
                                             <a href="#" data-action="anular" data-path="admin/solicitud_dieta" data-object="{{ $dr->id }}" class="btn-deleted" data-toogle="tooltrip" data-placement="top" title="Anular Solicitud" ><i class="fas fa-trash-alt"></i></a>
