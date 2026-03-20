@@ -768,7 +768,7 @@
             </TR>
 
             <TR>
-                <TH ROWSPAN="2" colspan="2" ALIGN="center">Papilla (licuada/purÃ©)</TH>
+                <TH ROWSPAN="2" colspan="2" ALIGN="center">Papilla (licuada/puré)</TH>
                 <TD colspan="2">
                     @foreach($details as $d)
                         @if($d->iddiet == "4")
@@ -1733,8 +1733,8 @@
 
 
             <TR>
-                <TH ROWSPAN="4">DIABÃ‰TICA</TH>
-                <TH> 1,500 CalorÃ­as</TH>
+                <TH ROWSPAN="4">DIABÉTICA</TH>
+                <TH> 1,500 Calorías</TH>
                 <TD colspan="2">
                     @foreach($details as $d)
                         @if($d->iddiet == "8")
@@ -1822,7 +1822,7 @@
             </TR>
 
             <TR>
-                <TH> 1,800 CalorÃ­as</TH>
+                <TH> 1,800 Calorías</TH>
                 <TD colspan="2">
                     @foreach($details as $d)
                         @if($d->iddiet == "9")
@@ -1885,7 +1885,7 @@
             </TR>
 
             <TR>
-                <TH> 2,000 CalorÃ­as</TH>
+                <TH> 2,000 Calorías</TH>
                 <TD colspan="2">
                     @foreach($details as $d)
                         @if($d->iddiet == "10")
@@ -1949,7 +1949,7 @@
             </TR>
 
             <TR>
-                <TH> 2,200 CalorÃ­as</TH>
+                <TH> 2,200 Calorías</TH>
                 <TD colspan="2">
                     @foreach($details as $d)
                         @if($d->iddiet == "11")
@@ -3577,7 +3577,7 @@
             </TR>
 
             <TR>
-                <TH ROWSPAN="3">01 a 07 aÃ±os (libre)</TH>
+                <TH ROWSPAN="3">01 a 07 años (libre)</TH>
                 <TD colspan="2">
                     @foreach($details as $d)
                         @if($d->iddiet == "15")
@@ -3656,7 +3656,7 @@
             </TR>
 
             <TR>
-                <TH ROWSPAN="3" colspan="2" ALIGN="center">Dietas calculadas por NutriciÃ³n</TH>
+                <TH ROWSPAN="3" colspan="2" ALIGN="center">Dietas calculadas por Nutrición</TH>
                 <TD colspan="2">
                     @foreach($details as $d)
                         @if($d->iddiet == "16")
@@ -3738,7 +3738,7 @@
                 <TH ROWSPAN="3" colspan="2" ALIGN="center" >OTRAS (Especificar)</TH>
                 <TD colspan="2" height="15">
                     @if($diet_request->idapplicant_service == 89)
-                        RefacciÃ³n                        
+                        RefacciOn                        
                     @else
                         @foreach($details as $d)
                             @if($d->iddiet >= 19 && $d->iddiet <= 29)
