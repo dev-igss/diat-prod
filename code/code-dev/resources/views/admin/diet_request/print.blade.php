@@ -3736,7 +3736,7 @@
             <TR>
                 <TH ROWSPAN="3" colspan="2" ALIGN="center" >OTRAS (Especificar)</TH>
                 <TD colspan="2" height="15">
-                    @if($diet_request->idapplicant_service == 89 || $diet_request->idapplicant_service => 22 && $diet_request->idapplicant_service <= 54)
+                    @if($diet_request->idapplicant_service == 89 || $diet_request->idapplicant_service >= 22 && $diet_request->idapplicant_service <= 54)
                         RefacciOn                        
                     @else
                         @foreach($details as $d)
