@@ -113,22 +113,24 @@ ini_set('max_execution_time', 0); ?>
                             </thead>
                             <tbody>
                                 @foreach($snak_requests as $sr)
-                                    <tr>
-                                        <td>{{ $sr->id }}</td>
-                                        <td>{{ $sr->created_at->format('d-m-Y H:i') }}</td>
-                                        <td> Refacción </td>
-                                        <td>{{ $sr->service->name }}<br>
-                                            {{ $sr->user->ibm.' - '.$sr->user->name.' '.$sr->user->lastname }}
-                                        </td>
-                                        <td>
-                                            Solicitadas: {{ $sr->total_diets }}
-                                            <br>
-                                            @if($sr->status == '2')
-                                                Servidas: {{ $sr->diets_served}}
-                                            @endif
-                                        </td>
-                                        <td>{{ getDietStatusArray(null, $sr->status) }}</td>
-                                    </tr>
+                                    @if($sr->service->id >= 22 and $sr->service->id <= 54)
+                                        <tr>
+                                            <td>{{ $sr->id }}</td>
+                                            <td>{{ $sr->created_at->format('d-m-Y H:i') }}</td>
+                                            <td> Refacción </td>
+                                            <td>{{ $sr->service->name }}<br>
+                                                {{ $sr->user->ibm.' - '.$sr->user->name.' '.$sr->user->lastname }}
+                                            </td>
+                                            <td>
+                                                Solicitadas: {{ $sr->total_diets }}
+                                                <br>
+                                                @if($sr->status == '2')
+                                                    Servidas: {{ $sr->diets_served}}
+                                                @endif
+                                            </td>
+                                            <td>{{ getDietStatusArray(null, $sr->status) }}</td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                                 
                             </tbody>
