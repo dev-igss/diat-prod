@@ -103,6 +103,7 @@ ini_set('max_execution_time', 0); ?>
                         <table id="table-modules" class="table table-bordered table-striped" style="background-color:#EDF4FB;">
                             <thead>
                                 <tr>
+                                    <td><strong> ID </strong></td>
                                     <td><strong> SOLICITADA </strong></td>
                                     <td><strong> JORNADA </strong></td>
                                     <td><strong> SERVICIO </strong></td>
@@ -113,7 +114,7 @@ ini_set('max_execution_time', 0); ?>
                             <tbody>
                                 @foreach($snak_requests as $sr)
                                     <tr>
-                                        
+                                        <td>{{ $sr->id}}</td>
                                         <td>{{ $sr->created_at->format('d-m-Y H:i') }}</td>
                                         <td> Refacción </td>
                                         <td>{{ $sr->service->name }}<br>
