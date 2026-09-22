@@ -846,7 +846,7 @@ class DietRequestsController extends Controller
         ];
 
         $pdf = PDF::loadView('admin.diet_request.print_bs',$data)->setPaper('a4', 'portrait');
-        return $pdf->stream('Solicitud de Refacciones BS -'.$iddiet_request.'.pdf');
+        return $pdf->stream('Solicitud de Refacciones BS - '.$iddiet_request.'.pdf');
     }
 
     public function getDietRequestPdfCoex($id){
@@ -858,7 +858,7 @@ class DietRequestsController extends Controller
         ];
 
         $pdf = PDF::loadView('admin.diet_request.print_coex',$data)->setPaper('a4', 'portrait');
-        return $pdf->stream('Solicitud de Refacciones Coex -'.$iddiet_request.'.pdf');
+        return $pdf->stream('Solicitud de Refacciones Coex - '.$iddiet_request.'.pdf');
     }
 
 
