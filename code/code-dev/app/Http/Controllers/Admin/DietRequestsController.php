@@ -859,6 +859,8 @@ class DietRequestsController extends Controller
             
         ];
 
+        $customPaper = array(0, 0, 396, 612);
+
         $pdf = PDF::loadView('admin.diet_request.print_coex',$data)->setPaper($customPaper, 'landscape');
         return $pdf->stream('Solicitud de Refacciones Coex - '.$iddiet_request.'.pdf');
     }
