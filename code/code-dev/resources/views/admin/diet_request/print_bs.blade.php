@@ -33,11 +33,11 @@
 
 
         <div style="text-align: center; margin-top: -25px;">
-            <span><strong> INSTITUTO GUATEMALTECO DE SEGURIDAD SOCIAL </strong> </span>
+            <span><strong> INSTITUTO GUATEMALTECO DE SEGURIDAD SOCIAL </strong> </span> </br>
             <span> Banco de Sangre </span>
         </div>
-        <div style="text-align: center; margin-top: -25px;">
-            <span><strong> SOLICITUD DE REFRIGERIO PARA </strong> </span>
+        <div style="text-align: center; margin-top: -50px;">
+            <span><strong> SOLICITUD DE REFRIGERIO PARA </strong> </span> </br>
             <span><strong> DONADORES DEL BANCO DE SANGRE </strong> </span>
         </div>
 
