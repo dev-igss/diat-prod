@@ -837,6 +837,29 @@ class DietRequestsController extends Controller
         return $pdf->stream('Solicitud de Dietas-'.$iddiet_request.'.pdf');
     }
 
+    public function getDietRequestPdfBs($id){
+        
+
+        $data = [
+            
+        ];
+
+        $pdf = PDF::loadView('admin.diet_request.print_bs',$data)->setPaper('a4', 'portrait');
+        return $pdf->stream('Solicitud de Refacciones BS -'.$iddiet_request.'.pdf');
+    }
+
+    public function getDietRequestPdfCoex($id){
+        
+
+        $data = [
+            
+        ];
+
+        $pdf = PDF::loadView('admin.diet_request.print_coex',$data)->setPaper('a4', 'portrait');
+        return $pdf->stream('Solicitud de Refacciones Coex -'.$iddiet_request.'.pdf');
+    }
+
+
     public function getDietRequestPdfLote($jornada){
         $hoy = Carbon::now()->format('Y-m-d');
         $diet_request = DietRequest::with('details')->whereDate('created_at', $hoy)->where('idjourney', $jornada)->where('status',1)->get();

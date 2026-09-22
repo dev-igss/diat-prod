@@ -23,6 +23,8 @@
         Route::get('/solicitud_dieta/{id}/cambio_dietas_servidas/{cantidad}', 'Admin\DietRequestsController@getDietRequestChangeDietsServida')->name('diet_request_change_diets_served');
         Route::get('/solicitud_dieta/{id}/detalles', 'Admin\DietRequestsController@getDietRequestView')->name('diet_request_view');
         Route::get('/solicitud_dieta/{id}/imprimir', 'Admin\DietRequestsController@getDietRequestPdf')->name('diet_request_view');
+        Route::get('/solicitud_dieta/{id}/imprimir_bs', 'Admin\DietRequestsController@getDietRequestPdfBs')->name('diet_request_view');
+        Route::get('/solicitud_dieta/{id}/imprimir_coex', 'Admin\DietRequestsController@getDietRequestPdfCoex')->name('diet_request_view');
         Route::get('/solicitud_dieta/impresion_lote/{jornada}', 'Admin\DietRequestsController@getDietRequestPdfLote')->name('diet_request_view');
         Route::get('/solicitud_dieta/impresion_cocineta/{jornada}', 'Admin\DietRequestsController@getDietRequestPdfCocineta')->name('diet_request_view');
         Route::get('/solicitud_dieta/{id}/anular', 'Admin\DietRequestsController@getDietRequestDelete')->name('diet_request_delete');
