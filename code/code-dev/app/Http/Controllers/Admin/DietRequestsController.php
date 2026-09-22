@@ -838,7 +838,8 @@ class DietRequestsController extends Controller
     }
 
     public function getDietRequestPdfBs($id){
-        
+        $diet_request = DietRequest::findOrFail($id);
+        $iddiet_request = $diet_request->id;
 
         $data = [
             
@@ -849,7 +850,8 @@ class DietRequestsController extends Controller
     }
 
     public function getDietRequestPdfCoex($id){
-        
+        $diet_request = DietRequest::findOrFail($id);
+        $iddiet_request = $diet_request->id;
 
         $data = [
             
