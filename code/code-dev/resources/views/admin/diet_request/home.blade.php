@@ -70,6 +70,8 @@ ini_set('max_execution_time', 0); ?>
                                         @if(kvfj(Auth::user()->permissions, 'diet_request_print') && $dr->status != '2' && $dr->status != '3')
                                             <a href="{{ url('/admin/solicitud_dieta/'.$dr->id.'/imprimir') }}" target="_blank" data-toogle="tooltrip" data-placement="top" title="Generar PDF"><i class="fas fa-file-pdf"></i></a>
                                         @endif
+                                        <a href="{{ url('/admin/solicitud_dieta/'.$dr->id.'/imprimir') }}" target="_blank" data-toogle="tooltrip" data-placement="top" title="Generar BS"><i class="fas fa-file-pdf"></i></a>
+                                        <a href="{{ url('/admin/solicitud_dieta/'.$dr->id.'/imprimir') }}" target="_blank" data-toogle="tooltrip" data-placement="top" title="Generar COEX"><i class="fas fa-file-pdf"></i></a>
                                         @if(kvfj(Auth::user()->permissions, 'diet_request_served') && $dr->status != '2' && $dr->status != '3')
                                             <a href="#" data-action="servida" data-servicio="{{ $dr->service->name  }}" data-dietas="{{ $dr->total_diets }}" data-path="admin/solicitud_dieta" data-object="{{ $dr->id }}" class="btn-deleted" data-toogle="tooltrip" data-placement="top" title="Dietas Servidas" ><i class="fas fa-clipboard-check"></i></a>
                                         @endif
