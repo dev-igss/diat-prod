@@ -4,195 +4,125 @@
 <meta charset="UTF-8">
 <title>SPS-1071 - Solicitud de refrigerio para donadores</title>
 <style>
-  /* Media carta horizontal: 8.5in x 5.5in */
-  @page {
-    size: 8.5in 5.5in;
-    margin: 0;
-  }
+    @page { margin: 0; }
 
-  * { box-sizing: border-box; }
-
-  html, body {
-    margin: 0;
-    padding: 0;
-    background: #d9d9d9;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #000;
-  }
-
-  .hoja {
-    width: 8.5in;
-    height: 5.5in;
-    margin: 0.3in auto;
-    background: #fff;
-    position: relative;
-    padding: 0.35in 0.55in 0.3in 0.55in;
-    box-shadow: 0 0 6px rgba(0,0,0,.3);
-  }
-
-  /* Encabezado */
-  .codigo {
-    position: absolute;
-    top: 0.25in;
-    right: 0.55in;
-    font-family: "Times New Roman", Times, serif;
-    font-weight: bold;
-    font-size: 12pt;
-  }
-
-  .encabezado {
-    display: flex;
-    align-items: center;
-    height: 0.9in;
-  }
-
-  .logo {
-    width: 0.85in;
-    height: 0.85in;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .logo img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-
-  .institucion {
-    flex: 1;
-    text-align: center;
-    padding-right: 0.85in; /* compensa el ancho del logo para centrar el texto */
-  }
-
-  .institucion .nombre {
-    font-weight: bold;
-    font-size: 12.5pt;
-    margin: 0;
-  }
-
-  .institucion .unidad {
-    font-weight: bold;
-    font-size: 9.5pt;
-    margin: 2px 0 0 0;
-  }
-
-  /* Título */
-  .titulo {
-    text-align: center;
-    font-weight: bold;
-    font-size: 12.5pt;
-    line-height: 1.25;
-    margin: 0.15in 0 0.25in 0;
-  }
-
-  /* Campos */
-  .campo {
-    display: flex;
-    align-items: flex-end;
-    font-size: 11pt;
-    margin-bottom: 0.2in;
-  }
-
-  .campo .linea {
-    border-bottom: 1px solid #000;
-    height: 1.1em;
-    margin: 0 4px;
-  }
-
-  .fecha {
-    justify-content: flex-end;
-  }
-
-  .fecha .linea { width: 2.4in; margin-right: 0; }
-
-  .cantidad .linea { width: 1.6in; }
-
-  .flex-linea .linea { flex: 1; margin-right: 0; }
-
-  /* Firma */
-  .atentamente {
-    font-size: 11pt;
-    margin: 0.25in 0 0.3in 0;
-  }
-
-  .firma {
-    margin-left: 2.25in;
-    font-size: 11pt;
-  }
-
-  .firma .fila {
-    display: flex;
-    align-items: flex-end;
-  }
-
-  .firma .linea {
-    border-bottom: 1px solid #000;
-    width: 3.1in;
-    height: 1.1em;
-    margin-left: 4px;
-  }
-
-  .firma .leyenda {
-    margin: 4px 0 0 1.05in;
-  }
-
-  @media print {
-    html, body { background: #fff; }
-    .hoja {
-      margin: 0;
-      box-shadow: none;
+    body {
+        margin: 0;
+        padding: 0.3in 0.55in 0.2in 0.55in;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 11pt;
+        color: #000;
     }
-  }
+
+    table { width: 100%; border-collapse: collapse; }
+    td { padding: 0; vertical-align: bottom; }
+
+    /* Encabezado */
+    .encabezado td { vertical-align: middle; }
+    .col-logo { width: 0.9in; height: 0.85in; }
+    .col-logo img { width: 0.8in; }
+    .col-codigo {
+        width: 0.9in;
+        vertical-align: top !important;
+        text-align: right;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: bold;
+        font-size: 12pt;
+    }
+    .institucion { text-align: center; }
+    .nombre { font-weight: bold; font-size: 12.5pt; }
+    .unidad { font-weight: bold; font-size: 9.5pt; padding-top: 2px; }
+
+    /* Título */
+    .titulo {
+        text-align: center;
+        font-weight: bold;
+        font-size: 12.5pt;
+        line-height: 1.25;
+        margin: 0.1in 0 0.2in 0;
+    }
+
+    /* Campos */
+    .campo { margin-bottom: 0.17in; }
+    .etiqueta { white-space: nowrap; width: 1%; padding-right: 4px; }
+    .linea { border-bottom: 1px solid #000; }
+    .texto-final { white-space: nowrap; padding-left: 4px; }
+
+    /* Firma */
+    .atentamente { margin: 0.2in 0 0.3in 0; }
+    .leyenda { padding-top: 4px; padding-left: 1.05in; }
 </style>
 </head>
 <body>
 
-<div class="hoja">
-  <div class="codigo">SPS-1071</div>
+    {{-- Encabezado --}}
+    <table class="encabezado">
+        <tr>
+            <td class="col-logo">
+                <img src="{{ public_path('img/logo-igss.png') }}" alt="">
+            </td>
+            <td class="institucion">
+                <div class="nombre">INSTITUTO GUATEMALTECO DE SEGURIDAD SOCIAL</div>
+                <div class="unidad">Banco de Sangre</div>
+            </td>
+            <td class="col-codigo">SPS-1071</td>
+        </tr>
+    </table>
 
-  <div class="encabezado">
-    <div class="logo">
-      <!-- Coloca aquí el archivo del logo del IGSS -->
-      <img src="logo-igss.png" alt="">
+    {{-- Título --}}
+    <div class="titulo">
+        SOLICITUD DE REFRIGERIO PARA<br>
+        DONADORES DEL BANCO DE SANGRE
     </div>
-    <div class="institucion">
-      <p class="nombre">INSTITUTO GUATEMALTECO DE SEGURIDAD SOCIAL</p>
-      <p class="unidad">Banco de Sangre</p>
-    </div>
-  </div>
 
-  <div class="titulo">
-    SOLICITUD DE REFRIGERIO PARA<br>
-    DONADORES DEL BANCO DE SANGRE
-  </div>
+    {{-- Fecha (alineada a la derecha) --}}
+    <table class="campo">
+        <tr>
+            <td style="width: 4.55in;">&nbsp;</td>
+            <td class="etiqueta">Fecha:</td>
+            <td class="linea">&nbsp;</td>
+        </tr>
+    </table>
 
-  <div class="campo fecha">
-    Fecha:<span class="linea"></span>
-  </div>
+    {{-- Cantidad --}}
+    <table class="campo">
+        <tr>
+            <td class="etiqueta">Por este medio solicito la cantidad de:</td>
+            <td class="linea" style="width: 1.6in;">&nbsp;</td>
+            <td class="texto-final">refacciones para donadores de sangre.</td>
+        </tr>
+    </table>
 
-  <div class="campo cantidad">
-    Por este medio solicito la cantidad de:<span class="linea"></span>refacciones para donadores de sangre.
-  </div>
+    {{-- Nombre --}}
+    <table class="campo">
+        <tr>
+            <td class="etiqueta">Nombre de la persona que solicita:</td>
+            <td class="linea">&nbsp;</td>
+        </tr>
+    </table>
 
-  <div class="campo flex-linea">
-    Nombre de la persona que solicita:<span class="linea"></span>
-  </div>
+    {{-- Cargo --}}
+    <table class="campo">
+        <tr>
+            <td class="etiqueta">Cargo:</td>
+            <td class="linea">&nbsp;</td>
+        </tr>
+    </table>
 
-  <div class="campo flex-linea">
-    Cargo:<span class="linea"></span>
-  </div>
+    <div class="atentamente">Atentamente,</div>
 
-  <div class="atentamente">Atentamente,</div>
-
-  <div class="firma">
-    <div class="fila">
-      Firma y sello<span class="linea"></span>
-    </div>
-    <div class="leyenda">Personal responsable del servicio solicitante</div>
-  </div>
-</div>
+    {{-- Firma y sello --}}
+    <table>
+        <tr>
+            <td style="width: 2.25in;">&nbsp;</td>
+            <td class="etiqueta">Firma y sello</td>
+            <td class="linea">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td colspan="2" class="leyenda">Personal responsable del servicio solicitante</td>
+        </tr>
+    </table>
 
 </body>
 </html>
