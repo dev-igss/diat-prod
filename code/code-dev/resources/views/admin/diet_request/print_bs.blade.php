@@ -154,7 +154,8 @@
 
   <div class="encabezado">
     <div class="logo">
-      <img src="{{ url('img/Isotipo.png') }}" alt="" width="50" height="50">
+      <!-- Coloca aquí el archivo del logo del IGSS -->
+      <img src="logo-igss.png" alt="">
     </div>
     <div class="institucion">
       <p class="nombre">INSTITUTO GUATEMALTECO DE SEGURIDAD SOCIAL</p>
@@ -195,4 +196,3 @@
 
 </body>
 </html>
-        
