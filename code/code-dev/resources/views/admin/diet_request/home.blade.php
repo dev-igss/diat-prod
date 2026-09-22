@@ -67,17 +67,25 @@ ini_set('max_execution_time', 0); ?>
                                         @if(kvfj(Auth::user()->permissions, 'diet_request_view') && $dr->status != '3')
                                             <a href="{{ url('/admin/solicitud_dieta/'.$dr->id.'/detalles') }}" data-toogle="tooltrip" data-placement="top" title="Ver Detalles"><i class="fas fa-eye"></i></a>
                                         @endif
+
                                         @if(kvfj(Auth::user()->permissions, 'diet_request_print') && $dr->status != '2' && $dr->status != '3')
+
+                                        @if(str_contains($dr->service->name, 'Cons -'))
+                                            <a href="{{ url('/admin/solicitud_dieta/'.$dr->id.'/imprimir') }}" target="_blank" data-toogle="tooltrip" data-placement="top" title="Generar BS"><i class="fas fa-file-pdf"></i></a>
+                                        @elseif($dr->service->name == 'Banco de Sangre')
+                                            <a href="{{ url('/admin/solicitud_dieta/'.$dr->id.'/imprimir') }}" target="_blank" data-toogle="tooltrip" data-placement="top" title="Generar COEX"><i class="fas fa-file-pdf"></i></a>
+                                        @else
                                             <a href="{{ url('/admin/solicitud_dieta/'.$dr->id.'/imprimir') }}" target="_blank" data-toogle="tooltrip" data-placement="top" title="Generar PDF"><i class="fas fa-file-pdf"></i></a>
                                         @endif
-                                        <a href="{{ url('/admin/solicitud_dieta/'.$dr->id.'/imprimir') }}" target="_blank" data-toogle="tooltrip" data-placement="top" title="Generar BS"><i class="fas fa-file-pdf"></i></a>
-                                        <a href="{{ url('/admin/solicitud_dieta/'.$dr->id.'/imprimir') }}" target="_blank" data-toogle="tooltrip" data-placement="top" title="Generar COEX"><i class="fas fa-file-pdf"></i></a>
+                                       
                                         @if(kvfj(Auth::user()->permissions, 'diet_request_served') && $dr->status != '2' && $dr->status != '3')
                                             <a href="#" data-action="servida" data-servicio="{{ $dr->service->name  }}" data-dietas="{{ $dr->total_diets }}" data-path="admin/solicitud_dieta" data-object="{{ $dr->id }}" class="btn-deleted" data-toogle="tooltrip" data-placement="top" title="Dietas Servidas" ><i class="fas fa-clipboard-check"></i></a>
                                         @endif
+
                                         @if(kvfj(Auth::user()->permissions, 'diet_request_change_diets_served') && $dr->status == '2')
                                             <a href="#" data-action="cambio_dietas_servidas" data-path="admin/solicitud_dieta" data-dietas-served="{{ $dr->diets_served }}" data-object="{{ $dr->id }}" class="btn-deleted" data-toogle="tooltrip" data-placement="top" title="Cambiar Dietas Servidas" ><i class="fas fa-pen"></i></a>
                                         @endif
+
                                         @if(kvfj(Auth::user()->permissions, 'diet_request_delete') && $dr->status != '2' && $dr->status != '3')
                                             <a href="#" data-action="anular" data-path="admin/solicitud_dieta" data-object="{{ $dr->id }}" class="btn-deleted" data-toogle="tooltrip" data-placement="top" title="Anular Solicitud" ><i class="fas fa-trash-alt"></i></a>
                                         @endif
