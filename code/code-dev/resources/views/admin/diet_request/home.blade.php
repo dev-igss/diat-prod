@@ -70,10 +70,10 @@ ini_set('max_execution_time', 0); ?>
 
                                         @if(kvfj(Auth::user()->permissions, 'diet_request_print') && $dr->status != '2' && $dr->status != '3')
 
-                                            @if(str_contains($dr->service->name, 'Cons -'))
-                                                <a href="{{ url('/admin/solicitud_dieta/'.$dr->id.'/imprimir') }}" target="_blank" data-toogle="tooltrip" data-placement="top" title="Generar BS"><i class="fas fa-file-pdf"></i></a>
-                                            @elseif($dr->service->name == 'Banco de Sangre')
+                                            @if(str_contains( strtolower($dr->service->name), 'cons -'))
                                                 <a href="{{ url('/admin/solicitud_dieta/'.$dr->id.'/imprimir') }}" target="_blank" data-toogle="tooltrip" data-placement="top" title="Generar COEX"><i class="fas fa-file-pdf"></i></a>
+                                            @elseif( strtolower($dr->service->name) == 'banco de sangre')
+                                                <a href="{{ url('/admin/solicitud_dieta/'.$dr->id.'/imprimir') }}" target="_blank" data-toogle="tooltrip" data-placement="top" title="Generar BS"><i class="fas fa-file-pdf"></i></a>
                                             @else
                                                 <a href="{{ url('/admin/solicitud_dieta/'.$dr->id.'/imprimir') }}" target="_blank" data-toogle="tooltrip" data-placement="top" title="Generar PDF"><i class="fas fa-file-pdf"></i></a>
                                             @endif
