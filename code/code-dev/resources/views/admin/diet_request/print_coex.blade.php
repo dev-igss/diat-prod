@@ -99,7 +99,7 @@
                 </td>
                 <td colspan="2">
                     <div class="etiqueta">FECHA</div>
-                    {{-- <div class="dato"> {{ \Carbon\Carbon::parse($diet_request->created_at)->format('d-m-Y')  }} prueba </div> --}}
+                    <div class="dato"> {{ \Carbon\Carbon::parse($diet_request->created_at)->format('d-m-Y')  }} prueba </div> 
                 </td>
             </tr>
             <tr>
@@ -109,7 +109,7 @@
                 </td>
                 <td style="width: 26%;">
                     <div class="etiqueta">CANTIDAD</div>
-                    {{-- <div class="dato"> {{ $diet_request->total_diets }} prueba</div> --}}
+                    <div class="dato"> {{ $diet_request->total_diets }} prueba</div> 
                 </td>
             </tr>
             <tr>
