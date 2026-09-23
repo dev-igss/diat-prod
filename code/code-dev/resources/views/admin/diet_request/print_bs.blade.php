@@ -85,7 +85,7 @@
         <tr>
             <td style="width: 4.55in;">&nbsp;</td>
             <td class="etiqueta">Fecha:</td>
-            <td class="linea">{{ \Carbon\Carbon::parse($diet_request->created_at)->format('d-m-Y')  }}&nbsp;</td>
+            <td class="linea dato">{{ \Carbon\Carbon::parse($diet_request->created_at)->format('d-m-Y')  }}&nbsp;</td>
         </tr>
     </table>
 
@@ -93,7 +93,7 @@
     <table class="campo">
         <tr>
             <td class="etiqueta">Por este medio solicito la cantidad de:</td>
-            <td class="linea" style="width: 1.6in;"> {{ $diet_request->total_diets }} &nbsp;</td>
+            <td class="linea dato" style="width: 1.6in;"> {{ $diet_request->total_diets }} &nbsp;</td>
             <td class="texto-final">refacciones para donadores de sangre.</td>
         </tr>
     </table>
