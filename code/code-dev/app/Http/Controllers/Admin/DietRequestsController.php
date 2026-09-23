@@ -842,8 +842,7 @@ class DietRequestsController extends Controller
         $iddiet_request = $diet_request->id;
 
         $data = [
-            'diet_request' => $diet_request,
-            'details' => $details,
+            'diet_request' => $diet_request
         ];
 
         $customPaper = array(0, 0, 396, 612);
@@ -857,8 +856,7 @@ class DietRequestsController extends Controller
         $iddiet_request = $diet_request->id;
 
         $data = [
-            'diet_request' => $diet_request,
-            'details' => $details,
+            'diet_request' => $diet_request
         ];
 
         $customPaper = array(0, 0, 396, 612);
