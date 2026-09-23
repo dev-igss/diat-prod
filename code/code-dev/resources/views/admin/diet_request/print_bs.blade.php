@@ -64,7 +64,7 @@
     <table class="encabezado">
         <tr>
             <td class="col-logo">
-                <img src="{{ public_path('img/logo-igss.png') }}" alt="">
+                <img src="{{ url('img/Isotipo.png') }}" alt="" width="50" height="50">
             </td>
             <td class="institucion">
                 <div class="nombre">INSTITUTO GUATEMALTECO DE SEGURIDAD SOCIAL</div>
@@ -102,7 +102,7 @@
     <table class="campo">
         <tr>
             <td class="etiqueta">Nombre de la persona que solicita:</td>
-            <td class="linea">&nbsp;</td>
+            <td class="linea dato"> {{ $diet_request->user->name.' '.$diet_request->user->lastname }}&nbsp;</td>
         </tr>
     </table>
 
@@ -110,7 +110,7 @@
     <table class="campo">
         <tr>
             <td class="etiqueta">Cargo:</td>
-            <td class="linea">&nbsp;</td>
+            <td class="linea dato">&nbsp;</td>
         </tr>
     </table>
 
