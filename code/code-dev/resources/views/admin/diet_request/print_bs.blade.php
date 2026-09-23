@@ -47,6 +47,11 @@
     .etiqueta { white-space: nowrap; width: 1%; padding-right: 4px; }
     .linea { border-bottom: 1px solid #000; }
     .texto-final { white-space: nowrap; padding-left: 4px; }
+    .dato {
+        text-align: center;
+        font-size: 11pt;
+        padding-bottom: 1px;
+    }
 
     /* Firma */
     .atentamente { margin: 0.2in 0 0.3in 0; }
@@ -80,7 +85,7 @@
         <tr>
             <td style="width: 4.55in;">&nbsp;</td>
             <td class="etiqueta">Fecha:</td>
-            <td class="linea">&nbsp;</td>
+            <td class="linea">{{ \Carbon\Carbon::parse($diet_request->created_at)->format('d-m-Y')  }}&nbsp;</td>
         </tr>
     </table>
 
@@ -88,7 +93,7 @@
     <table class="campo">
         <tr>
             <td class="etiqueta">Por este medio solicito la cantidad de:</td>
-            <td class="linea" style="width: 1.6in;">&nbsp;</td>
+            <td class="linea" style="width: 1.6in;"> {{ $diet_request->total_diets }} &nbsp;</td>
             <td class="texto-final">refacciones para donadores de sangre.</td>
         </tr>
     </table>
