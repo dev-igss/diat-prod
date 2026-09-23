@@ -74,7 +74,7 @@
 </head>
 <body>
 
-    {{-- Encabezado --}}
+
     <table class="encabezado">
         <tr>
             <td class="col-logo">
@@ -89,7 +89,7 @@
         </tr>
     </table>
 
-    {{-- Tabla del vale (3 columnas: 50% / 24% / 26%) --}}
+
     <div class="contenedor-vale">
         <table class="vale-tabla">
             <tr>
@@ -99,27 +99,27 @@
                 </td>
                 <td colspan="2">
                     <div class="etiqueta">FECHA</div>
-                    <div class="dato"> {{ \Carbon\Carbon::parse($diet_request->created_at)->format('d-m-Y')  }} prueba </div> 
+                    <div class="dato"> {{ \Carbon\Carbon::parse($diet_request->created_at)->format('d-m-Y')  }} </div> 
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
                     <div class="etiqueta">JUSTIFICACIÓN/ ACTIVIDAD</div>
-                    {{-- <div class="dato"> </div> --}}
+                    <div class="dato"> </div> 
                 </td>
                 <td style="width: 26%;">
                     <div class="etiqueta">CANTIDAD</div>
-                    <div class="dato"> {{ $diet_request->total_diets }} prueba</div> 
+                    <div class="dato"> {{ $diet_request->total_diets }} </div> 
                 </td>
             </tr>
             <tr>
                 <td>
                     <div class="etiqueta">NOMBRE DE QUIEN ENTREGA</div>
-                    {{-- <div class="dato"></div> --}}
+                    <div class="dato"></div> 
                 </td>
                 <td style="width: 24%;">
                     <div class="etiqueta">IBM</div>
-                    {{-- <div class="dato"></div> --}}
+                    <div class="dato"></div> 
                 </td>
                 <td>
                     <div class="etiqueta">FIRMA Y SELLO</div>
@@ -128,11 +128,11 @@
             <tr>
                 <td>
                     <div class="etiqueta">NOMBRE DE QUIEN RECIBE</div>
-                    {{-- <div class="dato"></div> --}}
+                    <div class="dato"></div> 
                 </td>
                 <td>
                     <div class="etiqueta">IBM</div>
-                    {{-- <div class="dato"></div> --}}
+                    <div class="dato"></div> 
                 </td>
                 <td>
                     <div class="etiqueta">FIRMA Y SELLO</div>
@@ -141,7 +141,7 @@
             <tr>
                 <td colspan="3">
                     <div class="etiqueta">OBSERVACIONES</div>
-                    {{-- <div class="dato"> </div> --}}
+                    <div class="dato"> </div> 
                 </td>
             </tr>
         </table>
