@@ -2,7 +2,6 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>SPS-1071 - Solicitud de refrigerio para donadores</title>
 <style>
     @page { margin: 0; }
 

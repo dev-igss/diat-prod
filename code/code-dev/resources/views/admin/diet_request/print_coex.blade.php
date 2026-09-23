@@ -2,7 +2,6 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Vale interno de refacciones/alimentación</title>
 <style>
     @page { margin: 0; }
 
@@ -100,7 +99,7 @@
                 </td>
                 <td colspan="2">
                     <div class="etiqueta">FECHA</div>
-                    {{-- <div class="dato"> </div> --}}
+                    {{-- <div class="dato"> {{ \Carbon\Carbon::parse($diet_request->created_at)->format('d-m-Y')  }} </div> --}}
                 </td>
             </tr>
             <tr>
@@ -110,7 +109,7 @@
                 </td>
                 <td style="width: 26%;">
                     <div class="etiqueta">CANTIDAD</div>
-                    {{-- <div class="dato"></div> --}}
+                    {{-- <div class="dato"> {{ $diet_request->total_diets }}</div> --}}
                 </td>
             </tr>
             <tr>
